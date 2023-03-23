@@ -1,0 +1,1 @@
+gcc main.c line.c color.c -o draw_line.exe

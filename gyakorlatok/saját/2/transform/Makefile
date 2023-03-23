@@ -1,0 +1,1 @@
+gcc main.c vector.c -o transform.exe
