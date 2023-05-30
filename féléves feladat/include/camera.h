@@ -1,0 +1,58 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
+#include "utils.h"
+#include "predator.h"
+
+#include <stdbool.h>
+
+/**
+ * Camera, as a moving point with direction
+ */
+typedef struct Camera
+{
+    vec3 position;
+    vec3 rotation;
+    vec3 speed;
+    bool is_preview_visible;
+
+    Predator* center;
+    
+} Camera;
+
+/**
+ * Initialize the camera to the start position.
+ */
+void init_camera(Camera* camera);
+
+/**
+ * Update the position of the camera.
+ */
+void update_camera(Camera* camera, double time);
+
+/**
+ * Apply the camera settings to the view transformation.
+ */
+void set_view(const Camera* camera);
+
+/**
+ * Set the horizontal and vertical rotation of the view angle.
+ */
+void rotate_camera(Camera* camera, double horizontal, double vertical);
+
+/**
+ * Set the speed of forward and backward motion.
+ */
+void set_camera_speed(Camera* camera, double speed);
+
+/**
+ * Set the speed of left and right side steps.
+ */
+void set_camera_side_speed(Camera* camera, double speed);
+
+void link_predator_to_camera(Camera* camera, const Predator* predator);
+void init_camera_light(Camera* camera);
+void update_camera_light(Camera* camera);
+void rotate_around_predator(Camera* camera, double angle);
+
+#endif /* CAMERA_H */
